@@ -37,7 +37,7 @@ requirements:
 
 test:
   commands:
-    - test -f $PREFIX/bin/rill
+    - $PREFIX/bin/rill | grep {{ version }}
 
 about:
   home: https://github.com/rilldata/rill
