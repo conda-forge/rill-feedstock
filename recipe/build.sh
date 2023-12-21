@@ -11,7 +11,7 @@ make cli.prepare
 go build \
     -v \
     -o "${PREFIX}"/bin/rill \
-    -ldflags="-X 'main.version=${PKG_VERSION}'"
+    -ldflags="-X 'main.version=${PKG_VERSION}'" \
     cli/main.go 
 
 # Clear out cache to avoid file not removable warnings
