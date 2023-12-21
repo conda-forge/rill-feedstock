@@ -7,9 +7,11 @@ popd
 
 # Don't use bundled pre-built static libs
 export GOFLAGS='-tags=duckdb_use_lib,dynamic'
-make cli
-mkdir -p $PREFIX/bin
-mv rill $PREFIX/bin/
+make cli.prepare
+go build \
+    -v \
+    -o "${PREFIX}"/bin/rill \
+    -ldflags="-X 'main.version=${PKG_VERSION}'"
 
 # Clear out cache to avoid file not removable warnings
 chmod -R u+w $(go env GOPATH) && rm -r $(go env GOPATH)
