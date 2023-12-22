@@ -16,7 +16,7 @@ source:
     fn: LICENSE-zap
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
@@ -27,7 +27,8 @@ requirements:
     - go-licenses
     - nodejs =18
     - make
-    - pkg-config  # [osx]
+    - pkg-config
+    - jq
   host:
     - librdkafka
     - libduckdb
@@ -37,7 +38,7 @@ requirements:
 
 test:
   commands:
-    - test -f $PREFIX/bin/rill
+    - $PREFIX/bin/rill --version | grep {{ version }}
 
 about:
   home: https://github.com/rilldata/rill
