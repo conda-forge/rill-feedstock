@@ -1,6 +1,9 @@
 #!/bin/bash
 set -exuo pipefail
 
+# Fetch build commit
+PKG_COMMIT=$(curl https://api.github.com/repos/rilldata/rill/git/ref/tags/v${PKG_VERSION} | jq -r ".object.sha" | head -c 8)
+
 pushd cli
 go-licenses save . --save_path ../library_licenses --ignore modernc.org/mathutil --ignore go.uber.org/zap/exp/zapslog
 popd
@@ -11,7 +14,7 @@ make cli.prepare
 go build \
     -v \
     -o "${PREFIX}"/bin/rill \
-    -ldflags="-X 'main.version=${PKG_VERSION}'" \
+    -ldflags="-s -w -X main.Version=${PKG_VERSION} -X main.Commit=${PKG_COMMIT} -X main.BuildDate=$(date)" \
     cli/main.go 
 
 # Clear out cache to avoid file not removable warnings

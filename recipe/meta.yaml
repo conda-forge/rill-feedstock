@@ -27,7 +27,8 @@ requirements:
     - go-licenses
     - nodejs =18
     - make
-    - pkg-config  # [osx]
+    - pkg-config
+    - jq
   host:
     - librdkafka
     - libduckdb
