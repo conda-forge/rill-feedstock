@@ -1,5 +1,5 @@
 {% set name = "rill" %}
-{% set version = "0.38.2" %}
+{% set version = "0.39.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/rilldata/rill/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: 90937be2eefce9d1799c351b08fea8d3806d6d36846e0850c223a0baa1c2ee29
+    sha256: e0c5263dbe42612fb9446620f905fd276f1753fccab6b9c815e47b468af59d94
   - url: https://gitlab.com/cznic/mathutil/-/raw/b13e5b5643328f15fd2fcedc85f647f0d8f9180f/LICENSE  # v1.5.0
     sha256: bfa9bf72a72ca009fd62a8f84fca3dca67e51d93af96352723646599898b6cf5
     fn: LICENSE-mathutil
