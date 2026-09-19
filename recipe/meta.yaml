@@ -1,5 +1,5 @@
 {% set name = "rill" %}
-{% set version = "0.39.1" %}
+{% set version = "0.89.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/rilldata/rill/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: fc109261a9e730692bdbcc92eccd0d3103fbe378e291a84edf190748d8a34218
+    sha256: 0263c165c3634a13c2d38a8919456b2a7bb30174c68843cb415a82c9b0f21a53
   - url: https://gitlab.com/cznic/mathutil/-/raw/b13e5b5643328f15fd2fcedc85f647f0d8f9180f/LICENSE  # v1.5.0
     sha256: bfa9bf72a72ca009fd62a8f84fca3dca67e51d93af96352723646599898b6cf5
     fn: LICENSE-mathutil
@@ -22,6 +22,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('go-cgo') }}
     - {{ compiler('cxx') }}
     - go-licenses
@@ -33,7 +34,6 @@ requirements:
     - libduckdb
     - zlib
   run:
-    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
 
 test:
   commands:
