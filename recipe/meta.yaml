@@ -16,12 +16,13 @@ source:
     fn: LICENSE-zap
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('go-cgo') }}
     - {{ compiler('cxx') }}
     - go-licenses
@@ -33,7 +34,6 @@ requirements:
     - libduckdb
     - zlib
   run:
-    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
 
 test:
   commands:
